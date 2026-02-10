@@ -1,10 +1,48 @@
 {
   "metadata": {
-    "title": "Memorial Website",
-    "description": "A memorial website"
+    "title": "Memorial - AI Reminder Assistant",
+    "description": "Your intelligent WhatsApp reminder assistant with AI capabilities"
   },
   "home": {
     "title": "Welcome",
-    "description": "Welcome to the memorial website"
+    "description": "Welcome to Memorial"
+  },
+  "sidebar": {
+    "search": "Search...",
+    "categories": {
+      "main": "Main",
+      "other": "Other"
+    },
+    "reminders": {
+      "title": "Reminders",
+      "all": "All Reminders",
+      "scheduled": "Scheduled",
+      "history": "History"
+    },
+    "connections": {
+      "title": "Connections",
+      "whatsapp": "WhatsApp",
+      "email": "Email Accounts",
+      "integrations": "App Center"
+    },
+    "settings": "Settings",
+    "subscription": "Subscription",
+    "admin": {
+      "title": "Admin",
+      "dashboard": "Dashboard",
+      "users": "Users",
+      "plans": "Plans"
+    }
+  },
+  "integrations": {
+    "title": "App Center",
+    "subtitle": "Connect your favorite tools and automate your workflows.",
+    "compatibleWith": "Compatible with {feature}"
+  },
+  "user": {
+    "profile": "Profile",
+    "billing": "Billing",
+    "settings": "Settings",
+    "logout": "Log out"
   }
 }

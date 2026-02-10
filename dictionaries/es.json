@@ -1,10 +1,48 @@
 {
   "metadata": {
-    "title": "Sitio Memorial",
-    "description": "Un sitio web memorial"
+    "title": "Memorial - Asistente de Recordatorios con IA",
+    "description": "Tu asistente inteligente de recordatorios por WhatsApp con capacidades de IA"
   },
   "home": {
     "title": "Bienvenido",
-    "description": "Bienvenido al sitio memorial"
+    "description": "Bienvenido a Memorial"
+  },
+  "sidebar": {
+    "search": "Buscar...",
+    "categories": {
+      "main": "Principal",
+      "other": "Otros"
+    },
+    "reminders": {
+      "title": "Recordatorios",
+      "all": "Todos los recordatorios",
+      "scheduled": "Programados",
+      "history": "Historial"
+    },
+    "connections": {
+      "title": "Conexiones",
+      "whatsapp": "WhatsApp",
+      "email": "Cuentas de email",
+      "integrations": "Centro de Apps"
+    },
+    "settings": "Configuración",
+    "subscription": "Suscripción",
+    "admin": {
+      "title": "Admin",
+      "dashboard": "Panel",
+      "users": "Usuarios",
+      "plans": "Planes"
+    }
+  },
+  "integrations": {
+    "title": "Centro de Apps",
+    "subtitle": "Conecta tus herramientas favoritas y automatiza tus flujos de trabajo.",
+    "compatibleWith": "Compatible con {feature}"
+  },
+  "user": {
+    "profile": "Perfil",
+    "billing": "Facturación",
+    "settings": "Configuración",
+    "logout": "Cerrar sesión"
   }
 }
