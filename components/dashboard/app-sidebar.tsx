@@ -57,6 +57,7 @@ type Dictionary = {
       dashboard: string;
       users: string;
       plans: string;
+      commits: string;
     };
   };
   user: {
@@ -131,6 +132,7 @@ function getAdminNavItems(dict: Dictionary["sidebar"]): NavItem[] {
         { title: dict.admin.dashboard, url: "/admin" },
         { title: dict.admin.users, url: "/admin/users" },
         { title: dict.admin.plans, url: "/admin/plans" },
+        { title: dict.admin.commits, url: "/admin/commits" },
       ],
     },
   ];

@@ -8,3 +8,5 @@ export {
   getAdminStats,
 } from "./users";
 export type { UserWithStats, GetUsersParams } from "./users";
+export { getCommits, getCommitFilterOptions } from "./commits";
+export type { GetCommitsParams } from "./commits";

@@ -31,7 +31,8 @@
       "title": "Admin",
       "dashboard": "Panel",
       "users": "Usuarios",
-      "plans": "Planes"
+      "plans": "Planes",
+      "commits": "Commits"
     }
   },
   "integrations": {

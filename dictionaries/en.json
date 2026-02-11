@@ -31,7 +31,8 @@
       "title": "Admin",
       "dashboard": "Dashboard",
       "users": "Users",
-      "plans": "Plans"
+      "plans": "Plans",
+      "commits": "Commits"
     }
   },
   "integrations": {
