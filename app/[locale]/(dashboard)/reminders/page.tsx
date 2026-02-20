@@ -1,5 +1,5 @@
 import { getReminders, getRemindersForDate } from "@/actions/reminders";
-import { ReminderList, TimelineView } from "@/components/reminders";
+import { ReminderList, TimelineView, CalendarPickerButton } from "@/components/reminders";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 
@@ -95,6 +95,7 @@ export default async function RemindersPage({
               </TabsTrigger>
             ))}
           </TabsList>
+          <CalendarPickerButton dateStr={dateStr} />
         </div>
 
         {/* List views */}
