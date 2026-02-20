@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-const GOOGLE_CLIENT_ID = process.env.GOOGLE_CLIENT_ID!;
-const GOOGLE_CLIENT_SECRET = process.env.GOOGLE_CLIENT_SECRET!;
+const GOOGLE_CLIENT_ID = process.env.AUTH_GOOGLE_ID!;
+const GOOGLE_CLIENT_SECRET = process.env.AUTH_GOOGLE_SECRET!;
 const GOOGLE_REDIRECT_URI = `${process.env.NEXT_PUBLIC_APP_URL || "http://localhost:3000"}/api/auth/gmail/callback`;
 
 export async function GET(request: NextRequest) {

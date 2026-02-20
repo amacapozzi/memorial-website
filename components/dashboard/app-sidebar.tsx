@@ -6,7 +6,13 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 
-import { SmartHomeIcon, type IconProps } from "@/components/icons";
+import {
+  SmartHomeIcon,
+  AppsIcon,
+  SettingsIcon,
+  SubscriptionIcon,
+  type IconProps,
+} from "@/components/icons";
 
 import { SearchForm } from "@/components/dashboard/search";
 import {
@@ -98,11 +104,9 @@ function getConnectionsNavItems(dict: Dictionary["sidebar"]): NavItem[] {
   return [
     {
       title: dict.connections.title,
-      icon: SmartHomeIcon,
+      icon: AppsIcon,
       defaultOpen: false,
-      items: [
-        { title: dict.connections.integrations, url: "/integrations" },
-      ],
+      items: [{ title: dict.connections.integrations, url: "/integrations" }],
     },
   ];
 }
@@ -112,12 +116,12 @@ function getOtherNavItems(dict: Dictionary["sidebar"]): NavItem[] {
     {
       title: dict.subscription,
       url: "/subscription",
-      icon: SmartHomeIcon,
+      icon: SubscriptionIcon,
     },
     {
       title: dict.settings,
       url: "/settings",
-      icon: SmartHomeIcon,
+      icon: SettingsIcon,
     },
   ];
 }
