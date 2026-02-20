@@ -11,7 +11,7 @@ const loginSchema = z.object({
 
 export default {
   providers: [
-    Google,
+    Google({ allowDangerousEmailAccountLinking: true }),
     Credentials({
       credentials: {
         email: { label: "Email", type: "email" },
