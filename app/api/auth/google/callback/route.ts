@@ -75,11 +75,6 @@ export async function GET(request: NextRequest) {
       },
     });
 
-    await prisma.user.update({
-      where: { id: stateData.userId },
-      data: { hasCalendarSync: true },
-    });
-
     return redirectTo("/integrations?connected=google-calendar");
   } catch (error) {
     console.error("Google Calendar OAuth error:", error);
