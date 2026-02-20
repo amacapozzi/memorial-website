@@ -39,7 +39,7 @@ export function LoginForm({ locale }: { locale: string }) {
 
   return (
     <div className="grid gap-6">
-      <form action={formAction} className="grid gap-3">
+      <form action={formAction} className="grid gap-4">
         {state.errors?._form && (
           <Alert variant="destructive">
             <AlertDescription>{state.errors._form[0]}</AlertDescription>
@@ -92,7 +92,7 @@ export function LoginForm({ locale }: { locale: string }) {
               {state.errors.password[0]}
             </p>
           )}
-          <div className="flex justify-end">
+          <div className="flex justify-end mt-3">
             <Link
               href={`/${locale}/forgot-password`}
               className="text-xs text-muted-foreground hover:text-primary transition-colors"
