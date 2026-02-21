@@ -17,7 +17,8 @@
       "title": "Recordatorios",
       "all": "Todos los recordatorios",
       "scheduled": "Programados",
-      "history": "Historial"
+      "history": "Historial",
+      "contacts": "Contactos"
     },
     "connections": {
       "title": "Conexiones",

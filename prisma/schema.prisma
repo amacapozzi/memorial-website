@@ -218,6 +218,8 @@ model Reminder {
   recurrenceDay  Int?           @map("recurrence_day")
   recurrenceTime String?        @map("recurrence_time")
 
+  ownerChatId String? @map("owner_chat_id")
+
   createdAt DateTime  @default(now()) @map("created_at")
   updatedAt DateTime  @updatedAt @map("updated_at")
   sentAt    DateTime? @map("sent_at")
@@ -394,6 +396,25 @@ enum ProcessedEmailStatus {
   REMINDER_CREATED
   SKIPPED
   FAILED
+}
+
+// =============================================
+// CONTACTS (bot user's contacts)
+// =============================================
+
+model Contact {
+  id        String   @id @default(cuid())
+  chatId    String   @map("chat_id")
+  name      String
+  phone     String
+  alias     String?  // optional nickname
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([chatId, name])
+  @@index([chatId])
+  @@map("contacts")
 }
 
 // =============================================

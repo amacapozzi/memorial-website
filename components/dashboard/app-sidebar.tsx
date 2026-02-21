@@ -51,6 +51,7 @@ type Dictionary = {
       all: string;
       scheduled: string;
       history: string;
+      contacts: string;
     };
     connections: {
       title: string;
@@ -97,6 +98,7 @@ function getMainNavItems(dict: Dictionary["sidebar"]): NavItem[] {
         { title: dict.reminders.all, url: "/reminders" },
         { title: dict.reminders.scheduled, url: "/reminders?view=schedule" },
         { title: dict.reminders.history, url: "/reminders/history" },
+        { title: dict.reminders.contacts, url: "/contacts" },
       ],
     },
   ];

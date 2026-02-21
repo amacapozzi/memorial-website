@@ -17,7 +17,8 @@
       "title": "Reminders",
       "all": "All Reminders",
       "scheduled": "Scheduled",
-      "history": "History"
+      "history": "History",
+      "contacts": "Contacts"
     },
     "connections": {
       "title": "Connections",
