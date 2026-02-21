@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
+import { getReminders } from "@/actions/reminders";
 import { AppSidebar } from "@/components/dashboard/app-sidebar";
 import { Breadcrumb } from "@/components/dashboard/breadcrumb";
 import {
@@ -24,11 +25,14 @@ export default async function DashboardLayout({
     redirect(`/${locale}/login`);
   }
 
-  const dictionary = await getDictionary(locale as Locale);
+  const [dictionary, remindersData] = await Promise.all([
+    getDictionary(locale as Locale),
+    getReminders({ limit: 30 }),
+  ]);
 
   return (
     <SidebarProvider>
-      <AppSidebar dictionary={dictionary} />
+      <AppSidebar dictionary={dictionary} reminders={remindersData.reminders} />
       <SidebarInset className="bg-background overflow-hidden">
         <header className="flex h-16 shrink-0 items-center gap-2 border-b border-border bg-background px-4">
           <SidebarTrigger className="-ml-1 md:hidden" />

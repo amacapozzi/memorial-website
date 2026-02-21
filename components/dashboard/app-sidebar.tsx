@@ -5,6 +5,7 @@ import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
+import type { ReminderWithUser } from "@/actions/reminders";
 
 import {
   SmartHomeIcon,
@@ -155,9 +156,14 @@ function isSectionActive(pathname: string, items: { url: string }[]): boolean {
 
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   dictionary: Dictionary;
+  reminders?: ReminderWithUser[];
 }
 
-export function AppSidebar({ dictionary, ...props }: AppSidebarProps) {
+export function AppSidebar({
+  dictionary,
+  reminders = [],
+  ...props
+}: AppSidebarProps) {
   const pathname = usePathname();
   const { data: session } = useSession();
   const isAdmin = session?.user?.role === "ADMIN";
@@ -253,7 +259,10 @@ export function AppSidebar({ dictionary, ...props }: AppSidebarProps) {
             </SidebarMenuButton>
           </SidebarMenuItem>
         </SidebarMenu>
-        <SearchForm placeholder={dictionary.sidebar.search} />
+        <SearchForm
+          placeholder={dictionary.sidebar.search}
+          reminders={reminders}
+        />
       </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>

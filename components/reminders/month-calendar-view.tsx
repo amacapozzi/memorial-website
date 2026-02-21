@@ -205,13 +205,29 @@ export function MonthCalendarView({
     return map;
   }, [reminders]);
 
+  const queryReminderId = searchParams.get("reminder");
+  const querySelectedReminder = queryReminderId
+    ? (remindersById.get(queryReminderId) ?? null)
+    : null;
+  const activeReminder = selectedReminder ?? querySelectedReminder;
+
   const updateQuery = (patch: Record<string, string>) => {
     const next = new URLSearchParams(searchParams.toString());
     next.set("view", "schedule");
+    next.delete("reminder");
     for (const [key, value] of Object.entries(patch)) {
       next.set(key, value);
     }
     router.push(`${pathname}?${next.toString()}`);
+  };
+
+  const closeReminderDialog = () => {
+    setSelectedReminder(null);
+    if (!queryReminderId) return;
+
+    const next = new URLSearchParams(searchParams.toString());
+    next.delete("reminder");
+    router.replace(`${pathname}?${next.toString()}`);
   };
 
   return (
@@ -333,8 +349,8 @@ export function MonthCalendarView({
       </div>
 
       <TimelineDetailDialog
-        reminder={selectedReminder}
-        onClose={() => setSelectedReminder(null)}
+        reminder={activeReminder}
+        onClose={closeReminderDialog}
       />
     </div>
   );
