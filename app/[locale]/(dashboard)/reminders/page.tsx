@@ -1,5 +1,9 @@
-import { getReminders, getRemindersForDate } from "@/actions/reminders";
-import { ReminderList, TimelineView, CalendarPickerButton } from "@/components/reminders";
+import { getReminders, getRemindersForMonth } from "@/actions/reminders";
+import {
+  ReminderList,
+  MonthCalendarView,
+  CalendarPickerButton,
+} from "@/components/reminders";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Link from "next/link";
 
@@ -42,10 +46,12 @@ export default async function RemindersPage({
     page?: string;
     view?: string;
     date?: string;
+    month?: string;
   }>;
 }) {
   const params = await searchParams;
-  const isScheduleView = !params.view && !params.status || params.view === "schedule";
+  const isScheduleView =
+    (!params.view && !params.status) || params.view === "schedule";
 
   const status = params.status as
     | "PENDING"
@@ -60,13 +66,29 @@ export default async function RemindersPage({
 
   // Fetch data based on view
   const today = new Date().toISOString().split("T")[0];
-  const dateStr = params.date || today;
+  const monthFromToday = today.slice(0, 7);
+  const monthFromDateParam =
+    params.date && /^\d{4}-\d{2}-\d{2}$/.test(params.date)
+      ? params.date.slice(0, 7)
+      : null;
+  const monthStr =
+    params.month && /^\d{4}-\d{2}$/.test(params.month)
+      ? params.month
+      : monthFromDateParam || monthFromToday;
 
-  const [listData, scheduleReminders] = await Promise.all([
+  const fallbackDate = monthStr === monthFromToday ? today : `${monthStr}-01`;
+  const dateParam =
+    params.date && /^\d{4}-\d{2}-\d{2}$/.test(params.date)
+      ? params.date
+      : fallbackDate;
+  const dateStr =
+    dateParam.slice(0, 7) === monthStr ? dateParam : `${monthStr}-01`;
+
+  const [listData, monthReminders] = await Promise.all([
     !isScheduleView
       ? getReminders({ status, page, limit: 12 })
       : Promise.resolve({ reminders: [], total: 0, totalPages: 0 }),
-    isScheduleView ? getRemindersForDate(dateStr) : Promise.resolve([]),
+    isScheduleView ? getRemindersForMonth(monthStr) : Promise.resolve([]),
   ]);
 
   return (
@@ -95,7 +117,9 @@ export default async function RemindersPage({
               </TabsTrigger>
             ))}
           </TabsList>
-          <CalendarPickerButton dateStr={dateStr} />
+          <div className="ml-auto">
+            <CalendarPickerButton dateStr={dateStr} />
+          </div>
         </div>
 
         {/* List views */}
@@ -105,13 +129,17 @@ export default async function RemindersPage({
           </TabsContent>
         )}
 
-        {/* Schedule / Timeline view */}
+        {/* Schedule / Calendar view */}
         {isScheduleView && (
           <TabsContent
             value="schedule"
             className="flex flex-col flex-1 min-h-0 min-w-0"
           >
-            <TimelineView reminders={scheduleReminders} dateStr={dateStr} />
+            <MonthCalendarView
+              reminders={monthReminders}
+              monthStr={monthStr}
+              selectedDateStr={dateStr}
+            />
           </TabsContent>
         )}
       </Tabs>

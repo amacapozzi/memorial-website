@@ -41,14 +41,16 @@ export function CalendarPickerButton({ dateStr }: { dateStr: string }) {
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          size="icon"
-          className="relative h-[42px] w-[42px] border-0 text-white/50 hover:text-white rounded-lg bg-white/[0.035] backdrop-blur-md shadow-[0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.07),inset_0_-1px_0_rgba(0,0,0,0.60),0_16px_34px_rgba(0,0,0,0.45)]"
-          aria-label="Pick a date (C)"
+          className="h-9 gap-2 pl-3 pr-2"
+          aria-label="Open Calendrar (C)"
         >
           <CalendarIcon className="size-4" />
-          <kbd className="pointer-events-none absolute -bottom-1.5 -right-1.5 flex h-4 w-4 items-center justify-center rounded bg-white/[0.12] text-[9px] font-semibold text-white/60 border border-white/20">
-            C
-          </kbd>
+          <span>Open Calendrar</span>
+          <span className="ml-auto border-l border-border/70 pl-2">
+            <kbd className="pointer-events-none rounded border border-border/70 bg-muted px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
+              C
+            </kbd>
+          </span>
         </Button>
       </PopoverTrigger>
       <PopoverContent
