@@ -17,8 +17,8 @@ const tabs = [
 ] as const;
 
 const tabTriggerClass = [
-  "h-[34px] rounded-md px-4",
-  "text-[14px] leading-none",
+  "h-[34px] rounded-md px-3 sm:px-4",
+  "text-xs sm:text-[14px] leading-none",
   "transition-[color,background,box-shadow] duration-200",
   "focus-visible:outline-none focus-visible:ring-0",
   "text-white/35 hover:text-white/50",
@@ -32,7 +32,7 @@ const tabTriggerClass = [
 
 const tabsListClass = [
   "relative inline-flex items-center gap-1",
-  "w-fit px-1 py-5.5",
+  "w-max px-1 py-5.5",
   "rounded-lg",
   "bg-white/[0.035] backdrop-blur-md",
   "shadow-[0_0_0_1px_rgba(255,255,255,0.05),inset_0_1px_0_rgba(255,255,255,0.07),inset_0_-1px_0_rgba(0,0,0,0.60),0_16px_34px_rgba(0,0,0,0.45)]",
@@ -94,7 +94,9 @@ export default async function RemindersPage({
   return (
     <div className="flex flex-col h-full min-h-0 min-w-0 gap-6 font-sans">
       <div className="shrink-0">
-        <h2 className="text-2xl font-bold tracking-tight">Reminders</h2>
+        <h2 className="text-xl sm:text-2xl font-bold tracking-tight">
+          Reminders
+        </h2>
         <p className="text-muted-foreground">
           View and manage all your scheduled reminders.
         </p>
@@ -104,20 +106,22 @@ export default async function RemindersPage({
         defaultValue={activeTab}
         className="flex flex-col flex-1 min-h-0 min-w-0 gap-4"
       >
-        <div className="flex items-center gap-3 shrink-0">
-          <TabsList className={tabsListClass}>
-            {tabs.map((t) => (
-              <TabsTrigger
-                key={t.value}
-                value={t.value}
-                asChild
-                className={tabTriggerClass}
-              >
-                <Link href={t.href}>{t.label}</Link>
-              </TabsTrigger>
-            ))}
-          </TabsList>
-          <div className="ml-auto">
+        <div className="flex shrink-0 flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="w-full overflow-x-auto pb-1 sm:pb-0">
+            <TabsList className={tabsListClass}>
+              {tabs.map((t) => (
+                <TabsTrigger
+                  key={t.value}
+                  value={t.value}
+                  asChild
+                  className={tabTriggerClass}
+                >
+                  <Link href={t.href}>{t.label}</Link>
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
+          <div className="w-full sm:ml-auto sm:w-auto [&>button]:w-full sm:[&>button]:w-auto">
             <CalendarPickerButton dateStr={dateStr} />
           </div>
         </div>

@@ -5,13 +5,20 @@ import { useRouter } from "next/navigation";
 import { CalendarIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
+import { cn } from "@/lib/utils";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function CalendarPickerButton({ dateStr }: { dateStr: string }) {
+export function CalendarPickerButton({
+  dateStr,
+  className,
+}: {
+  dateStr: string;
+  className?: string;
+}) {
   const router = useRouter();
   const [open, setOpen] = useState(false);
 
@@ -41,12 +48,12 @@ export function CalendarPickerButton({ dateStr }: { dateStr: string }) {
       <PopoverTrigger asChild>
         <Button
           variant="outline"
-          className="h-9 gap-2 pl-3 pr-2"
-          aria-label="Open Calendrar (C)"
+          className={cn("h-9 gap-2 pl-3 pr-2", className)}
+          aria-label="Open Calendar (C)"
         >
           <CalendarIcon className="size-4" />
-          <span>Open Calendrar</span>
-          <span className="ml-auto border-l border-border/70 pl-2">
+          <span>Open Calendar</span>
+          <span className="ml-auto hidden border-l border-border/70 pl-2 sm:inline-flex">
             <kbd className="pointer-events-none rounded border border-border/70 bg-muted px-1.5 py-0.5 text-[10px] font-semibold text-muted-foreground">
               C
             </kbd>

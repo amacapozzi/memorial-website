@@ -34,6 +34,7 @@ import {
   SidebarMenuSubItem,
   SidebarRail,
   SidebarSeparator,
+  SidebarTrigger,
 } from "@/components/ui/sidebar";
 import { UserSidebar } from "./user-sidebar";
 
@@ -242,6 +243,9 @@ export function AppSidebar({ dictionary, ...props }: AppSidebarProps) {
   return (
     <Sidebar className="font-sans" {...props}>
       <SidebarHeader>
+        <div className="flex justify-end px-2 pt-2 md:hidden">
+          <SidebarTrigger className="text-[#737373] hover:text-white" />
+        </div>
         <SidebarMenu>
           <SidebarMenuItem className="px-3 my-1">
             <SidebarMenuButton size="lg" asChild>

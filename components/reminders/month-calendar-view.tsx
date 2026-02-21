@@ -215,16 +215,16 @@ export function MonthCalendarView({
   };
 
   return (
-    <div className="flex flex-col gap-6">
-      <div className="flex items-center gap-4">
+    <div className="flex flex-col gap-4 sm:gap-6">
+      <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:gap-4">
         <div>
-          <h2 className="text-3xl font-semibold text-white">
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white">
             {monthLabel(monthStr)}
           </h2>
           <p className="text-sm text-white/50">{monthRangeLabel(monthStr)}</p>
         </div>
 
-        <div className="ml-auto flex items-center gap-1">
+        <div className="flex items-center gap-1 sm:ml-auto">
           <button
             type="button"
             className="rounded p-1.5 text-white/45 transition-colors hover:bg-white/[0.05] hover:text-white/75"
@@ -248,86 +248,88 @@ export function MonthCalendarView({
         </div>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-white/12 bg-transparent">
-        <div className="grid grid-cols-7 border-b border-white/10">
-          {dayNames.map((name) => (
+      <div className="overflow-x-auto">
+        <div className="min-w-[720px] overflow-hidden rounded-lg border border-white/12 bg-transparent">
+          <div className="grid grid-cols-7 border-b border-white/10">
+            {dayNames.map((name) => (
+              <div
+                key={name}
+                className="border-r border-white/10 px-3 py-2.5 text-center text-xs font-medium text-white/55 last:border-r-0"
+              >
+                {name}
+              </div>
+            ))}
+          </div>
+
+          {weeks.map((week, wi) => (
             <div
-              key={name}
-              className="border-r border-white/10 px-3 py-2.5 text-center text-xs font-medium text-white/55 last:border-r-0"
+              key={wi}
+              className="grid grid-cols-7 border-b border-white/10 last:border-b-0"
             >
-              {name}
+              {week.map((day, di) => (
+                <button
+                  key={`${wi}-${di}`}
+                  type="button"
+                  onClick={() => updateQuery({ date: day.iso })}
+                  className={[
+                    "group min-h-[96px] sm:min-h-[120px] border-r border-white/10 px-1.5 sm:px-2 py-2 text-left align-top last:border-r-0",
+                    "transition-[background-color,box-shadow] duration-200",
+                    "hover:bg-white/[0.04] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]",
+                    day.iso === selectedDateStr
+                      ? "bg-white/[0.06] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"
+                      : "",
+                    day.isCurrentMonth === false ? "opacity-40" : "",
+                  ].join(" ")}
+                >
+                  <span className="text-sm font-medium text-white/55">
+                    {day.day}
+                  </span>
+
+                  <div className="mt-1 space-y-1">
+                    {day.events.map((event) => (
+                      <div
+                        key={event.id}
+                        role="button"
+                        tabIndex={0}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          const reminder = remindersById.get(event.id);
+                          if (reminder) setSelectedReminder(reminder);
+                        }}
+                        onKeyDown={(e) => {
+                          if (e.key !== "Enter" && e.key !== " ") return;
+                          e.preventDefault();
+                          e.stopPropagation();
+                          const reminder = remindersById.get(event.id);
+                          if (reminder) setSelectedReminder(reminder);
+                        }}
+                        className={`flex items-center gap-1 rounded px-1.5 py-0.5 text-xs transition-all duration-200 group-hover:brightness-110 ${eventColorClasses[event.color]}`}
+                      >
+                        {event.dot && (
+                          <span
+                            className={`h-1.5 w-1.5 shrink-0 rounded-full ${dotColorClasses[event.color]}`}
+                          />
+                        )}
+                        <span className="truncate font-medium">
+                          {event.title}
+                        </span>
+                        <span className="ml-auto hidden shrink-0 text-[10px] opacity-80 sm:inline">
+                          {event.time}
+                        </span>
+                      </div>
+                    ))}
+
+                    {day.moreCount && (
+                      <span className="pl-1 text-xs text-white/45">
+                        {day.moreCount} more...
+                      </span>
+                    )}
+                  </div>
+                </button>
+              ))}
             </div>
           ))}
         </div>
-
-        {weeks.map((week, wi) => (
-          <div
-            key={wi}
-            className="grid grid-cols-7 border-b border-white/10 last:border-b-0"
-          >
-            {week.map((day, di) => (
-              <button
-                key={`${wi}-${di}`}
-                type="button"
-                onClick={() => updateQuery({ date: day.iso })}
-                className={[
-                  "group min-h-[120px] border-r border-white/10 px-2 py-2 text-left align-top last:border-r-0",
-                  "transition-[background-color,box-shadow] duration-200",
-                  "hover:bg-white/[0.04] hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.08)]",
-                  day.iso === selectedDateStr
-                    ? "bg-white/[0.06] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.12)]"
-                    : "",
-                  day.isCurrentMonth === false ? "opacity-40" : "",
-                ].join(" ")}
-              >
-                <span className="text-sm font-medium text-white/55">
-                  {day.day}
-                </span>
-
-                <div className="mt-1 space-y-1">
-                  {day.events.map((event) => (
-                    <div
-                      key={event.id}
-                      role="button"
-                      tabIndex={0}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        const reminder = remindersById.get(event.id);
-                        if (reminder) setSelectedReminder(reminder);
-                      }}
-                      onKeyDown={(e) => {
-                        if (e.key !== "Enter" && e.key !== " ") return;
-                        e.preventDefault();
-                        e.stopPropagation();
-                        const reminder = remindersById.get(event.id);
-                        if (reminder) setSelectedReminder(reminder);
-                      }}
-                      className={`flex items-center gap-1 rounded px-1.5 py-0.5 text-xs transition-all duration-200 group-hover:brightness-110 ${eventColorClasses[event.color]}`}
-                    >
-                      {event.dot && (
-                        <span
-                          className={`h-1.5 w-1.5 shrink-0 rounded-full ${dotColorClasses[event.color]}`}
-                        />
-                      )}
-                      <span className="truncate font-medium">
-                        {event.title}
-                      </span>
-                      <span className="ml-auto shrink-0 text-[10px] opacity-80">
-                        {event.time}
-                      </span>
-                    </div>
-                  ))}
-
-                  {day.moreCount && (
-                    <span className="pl-1 text-xs text-white/45">
-                      {day.moreCount} more...
-                    </span>
-                  )}
-                </div>
-              </button>
-            ))}
-          </div>
-        ))}
       </div>
 
       <TimelineDetailDialog
