@@ -33,7 +33,8 @@
       "dashboard": "Panel",
       "users": "Usuarios",
       "plans": "Planes",
-      "commits": "Commits"
+      "commits": "Commits",
+      "emails": "Correos"
     }
   },
   "integrations": {
@@ -46,5 +47,222 @@
     "billing": "Facturación",
     "settings": "Configuración",
     "logout": "Cerrar sesión"
+  },
+  "common": {
+    "save": "Guardar",
+    "saving": "Guardando...",
+    "cancel": "Cancelar",
+    "delete": "Eliminar",
+    "deleting": "Eliminando...",
+    "edit": "Editar",
+    "create": "Crear",
+    "confirm": "Confirmar",
+    "close": "Cerrar",
+    "back": "Atrás",
+    "next": "Siguiente",
+    "submit": "Enviar",
+    "loading": "Cargando...",
+    "error": "Error",
+    "success": "Éxito",
+    "noResults": "Sin resultados",
+    "yes": "Sí",
+    "no": "No"
+  },
+  "contacts": {
+    "title": "Contactos",
+    "description": "Gestiona los contactos que has añadido por WhatsApp.",
+    "addContact": "Añadir contacto",
+    "newContact": "Nuevo contacto",
+    "editContact": "Editar contacto",
+    "noWhatsApp": "Sin WhatsApp vinculado",
+    "noWhatsAppDescription": "Vincula tu cuenta de WhatsApp en",
+    "settings": "Configuración",
+    "toStartManagingContacts": "para empezar a gestionar contactos.",
+    "noContacts": "Sin contactos aún",
+    "noContactsDescription": "Añade tu primer contacto usando el botón de arriba, o vía WhatsApp:",
+    "whatsAppCommand": "\"agrega a Juan con el 1122334455\"",
+    "noContacts_zero": "Sin contactos",
+    "noContacts_one": "1 contacto",
+    "noContacts_other": "{count} contactos",
+    "deleteContact": "Eliminar contacto",
+    "deleteContactDescription": "¿Eliminar a {name} de tus contactos? Esta acción no se puede deshacer.",
+    "fields": {
+      "name": "Nombre",
+      "phone": "Teléfono",
+      "alias": "Alias",
+      "fullName": "Nombre completo",
+      "phonePlaceholder": "1122334455",
+      "aliasPlaceholder": "Apodo o alias corto (opcional)",
+      "phoneHelp": "Argentina: introduce 10 dígitos (código de país añadido automáticamente)"
+    },
+    "errors": {
+      "somethingWentWrong": "Algo salió mal"
+    }
+  },
+  "reminders": {
+    "title": "Recordatorios",
+    "description": "Ver y gestionar todos tus recordatorios programados.",
+    "schedule": "Agenda",
+    "all": "Todos",
+    "pending": "Pendientes",
+    "sent": "Enviados",
+    "failed": "Fallidos",
+    "cancelled": "Cancelados",
+    "deleteReminder": "Eliminar recordatorio",
+    "deleteReminderDescription": "¿Estás seguro de que quieres eliminar este recordatorio? Esta acción no se puede deshacer.",
+    "cancel": "Cancelar",
+    "recurrence": {
+      "none": "Sin repetición",
+      "daily": "Diario",
+      "weekly": "Semanal",
+      "monthly": "Mensual"
+    },
+    "status": {
+      "pending": "pendiente",
+      "sent": "enviado",
+      "failed": "fallido",
+      "cancelled": "cancelado"
+    }
+  },
+  "profile": {
+    "title": "Perfil",
+    "description": "Tu información personal y plan."
+  },
+  "settings": {
+    "title": "Preferencias",
+    "description": "Configurá las notificaciones del bot.",
+    "notifications": {
+      "title": "Notificaciones",
+      "description": "Elegí qué resúmenes querés recibir por WhatsApp",
+      "morningBrief": {
+        "title": "Resumen matutino",
+        "description": "Recibí un resumen de tu día al comenzar la mañana"
+      },
+      "dailyDigest": {
+        "title": "Resumen diario",
+        "description": "Recibí un resumen de tus recordatorios del día"
+      },
+      "digestHour": {
+        "title": "Hora del resumen diario",
+        "description": "A qué hora recibir el resumen"
+      }
+    },
+    "profile": {
+      "title": "Perfil",
+      "description": "Tu información personal",
+      "name": "Nombre",
+      "email": "Email",
+      "memberSince": "Miembro desde"
+    },
+    "plan": {
+      "title": "Tu Plan",
+      "active": "Activo",
+      "trial": "Prueba",
+      "cancelled": "Cancelado",
+      "pastDue": "Vencido",
+      "paused": "Pausado",
+      "dayRemaining": "día restante",
+      "daysRemaining": "días restantes",
+      "onPlan": "Estás en el plan {plan}",
+      "noActivePlan": "Sin plan activo",
+      "noPlanDescription": "No tienes un plan activo. Suscríbete para empezar a usar todas las funciones."
+    },
+    "connectedAccounts": {
+      "title": "Cuentas Conectadas",
+      "description": "Gestiona tus servicios e integraciones conectadas",
+      "whatsApp": "WhatsApp",
+      "connected": "Conectado",
+      "notConnected": "No conectado",
+      "manage": "Gestionar",
+      "connect": "Conectar"
+    },
+    "buttons": {
+      "manageSubscription": "Gestionar Suscripción",
+      "viewPlans": "Ver Planes"
+    }
+  },
+  "subscription": {
+    "title": "Suscripción",
+    "description": "Gestiona tu suscripción e información de facturación.",
+    "currentPlan": "Plan Actual: {plan}",
+    "billingCycle": "Ciclo de Facturación",
+    "price": "Precio",
+    "currentPeriod": "Período Actual",
+    "nextBillingDate": "Próxima Fecha de Facturación",
+    "trialEndsOn": "La prueba termina el",
+    "changePlan": "Cambiar Plan",
+    "cancelSubscription": "Cancelar Suscripción",
+    "noActiveSubscription": "Sin Suscripción Activa",
+    "noSubscriptionDescription": "No tienes una suscripción activa. Elige un plan para desbloquear funciones premium.",
+    "availablePlans": "Planes Disponibles:",
+    "startingAt": "Comenzando desde",
+    "month": "mes",
+    "year": "año",
+    "buttons": {
+      "viewPlans": "Ver Planes"
+    }
+  },
+  "admin": {
+    "plans": {
+      "editPlan": "Editar Plan",
+      "createPlan": "Crear Plan",
+      "updatePlanDetails": "Actualiza los detalles del plan a continuación.",
+      "fillNewPlanDetails": "Rellena los detalles para el nuevo plan.",
+      "fields": {
+        "planName": "Nombre del Plan",
+        "sortOrder": "Orden de Clasificación",
+        "description": "Descripción",
+        "pricing": "Precios",
+        "monthlyPrice": "Precio Mensual ($)",
+        "yearlyDiscount": "Descuento Anual (%)",
+        "yearlyPrice": "Precio Anual ($)",
+        "resetToAutoCalculated": "Restablecer a calculado automáticamente",
+        "mpMonthlyPlanId": "ID Plan MP Mensual",
+        "mpYearlyPlanId": "ID Plan MP Anual",
+        "maxReminders": "Máx. Recordatorios",
+        "maxEmailAccounts": "Máx. Cuentas de Email",
+        "trialDays": "Días de Prueba",
+        "unlimited": "Ilimitado",
+        "calendarSync": "Sincronización de Calendario",
+        "emailSync": "Sincronización de Email",
+        "emailReply": "Responder Emails",
+        "active": "Activo",
+        "addFeature": "Añadir función...",
+        "features": "Funciones"
+      },
+      "fullAnnual": "Anual completo: ${full} | Descuento: {discount}% (${savings} off)",
+      "buttons": {
+        "add": "Añadir",
+        "remove": "Eliminar",
+        "cancel": "Cancelar",
+        "save": "Guardar",
+        "saving": "Guardando...",
+        "updatePlan": "Actualizar Plan",
+        "createPlanButton": "Crear Plan"
+      }
+    }
+  },
+  "auth": {
+    "createAccount": "Crear cuenta",
+    "createPassword": "Crear una contraseña",
+    "confirmPassword": "Confirmar tu contraseña",
+    "createAccountButton": "Crear Cuenta",
+    "login": {
+      "title": "Iniciar sesión",
+      "noAccount": "¿No tienes cuenta?",
+      "signUp": "Regístrate"
+    },
+    "register": {
+      "title": "Crear una cuenta",
+      "hasAccount": "¿Ya tienes cuenta?",
+      "signIn": "Inicia sesión"
+    }
+  },
+  "status": {
+    "active": "Activo",
+    "trialing": "En prueba",
+    "cancelled": "Cancelado",
+    "past_due": "Vencido",
+    "paused": "Pausado"
   }
 }

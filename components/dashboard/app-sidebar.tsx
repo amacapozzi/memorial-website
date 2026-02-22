@@ -4,7 +4,6 @@ import * as React from "react";
 import { ChevronRightIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
 import type { ReminderWithUser } from "@/actions/reminders";
 
 import {
@@ -39,7 +38,15 @@ import {
 } from "@/components/ui/sidebar";
 import { UserSidebar } from "./user-sidebar";
 
-type Dictionary = {
+export type Dictionary = {
+  metadata: {
+    title: string;
+    description: string;
+  };
+  home: {
+    title: string;
+    description: string;
+  };
   sidebar: {
     search: string;
     categories: {
@@ -67,13 +74,216 @@ type Dictionary = {
       users: string;
       plans: string;
       commits: string;
+      emails: string;
     };
+  };
+  integrations: {
+    title: string;
+    subtitle: string;
+    compatibleWith: string;
   };
   user: {
     profile: string;
     billing: string;
     settings: string;
     logout: string;
+  };
+  common: {
+    save: string;
+    saving: string;
+    cancel: string;
+    delete: string;
+    deleting: string;
+    edit: string;
+    create: string;
+    confirm: string;
+    close: string;
+    back: string;
+    next: string;
+    submit: string;
+    loading: string;
+    error: string;
+    success: string;
+    noResults: string;
+    yes: string;
+    no: string;
+  };
+  contacts: {
+    title: string;
+    description: string;
+    addContact: string;
+    newContact: string;
+    editContact: string;
+    noWhatsApp: string;
+    noWhatsAppDescription: string;
+    settings: string;
+    toStartManagingContacts: string;
+    noContacts: string;
+    noContactsDescription: string;
+    whatsAppCommand: string;
+    noContacts_zero: string;
+    noContacts_one: string;
+    noContacts_other: string;
+    deleteContact: string;
+    deleteContactDescription: string;
+    fields: {
+      name: string;
+      phone: string;
+      alias: string;
+      fullName: string;
+      phonePlaceholder: string;
+      aliasPlaceholder: string;
+      phoneHelp: string;
+    };
+    errors: {
+      somethingWentWrong: string;
+    };
+  };
+  reminders: {
+    title: string;
+    description: string;
+    schedule: string;
+    all: string;
+    pending: string;
+    sent: string;
+    failed: string;
+    cancelled: string;
+    deleteReminder: string;
+    deleteReminderDescription: string;
+    cancel: string;
+    recurrence: {
+      none: string;
+      daily: string;
+      weekly: string;
+      monthly: string;
+    };
+    status: {
+      pending: string;
+      sent: string;
+      failed: string;
+      cancelled: string;
+    };
+  };
+  settings: {
+    title: string;
+    description: string;
+    profile: {
+      title: string;
+      description: string;
+      name: string;
+      email: string;
+      memberSince: string;
+    };
+    plan: {
+      title: string;
+      active: string;
+      trial: string;
+      cancelled: string;
+      pastDue: string;
+      paused: string;
+      dayRemaining: string;
+      daysRemaining: string;
+      onPlan: string;
+      noActivePlan: string;
+      noPlanDescription: string;
+    };
+    connectedAccounts: {
+      title: string;
+      description: string;
+      whatsApp: string;
+      connected: string;
+      notConnected: string;
+      manage: string;
+      connect: string;
+    };
+    buttons: {
+      manageSubscription: string;
+      viewPlans: string;
+    };
+  };
+  subscription: {
+    title: string;
+    description: string;
+    currentPlan: string;
+    billingCycle: string;
+    price: string;
+    currentPeriod: string;
+    nextBillingDate: string;
+    trialEndsOn: string;
+    changePlan: string;
+    cancelSubscription: string;
+    noActiveSubscription: string;
+    noSubscriptionDescription: string;
+    availablePlans: string;
+    startingAt: string;
+    month: string;
+    year: string;
+    buttons: {
+      viewPlans: string;
+    };
+  };
+  admin: {
+    plans: {
+      editPlan: string;
+      createPlan: string;
+      updatePlanDetails: string;
+      fillNewPlanDetails: string;
+      fields: {
+        planName: string;
+        sortOrder: string;
+        description: string;
+        pricing: string;
+        monthlyPrice: string;
+        yearlyDiscount: string;
+        yearlyPrice: string;
+        resetToAutoCalculated: string;
+        mpMonthlyPlanId: string;
+        mpYearlyPlanId: string;
+        maxReminders: string;
+        maxEmailAccounts: string;
+        trialDays: string;
+        unlimited: string;
+        calendarSync: string;
+        emailSync: string;
+        emailReply: string;
+        active: string;
+        addFeature: string;
+        features: string;
+      };
+      fullAnnual: string;
+      buttons: {
+        add: string;
+        remove: string;
+        cancel: string;
+        save: string;
+        saving: string;
+        updatePlan: string;
+        createPlanButton: string;
+      };
+    };
+  };
+  auth: {
+    createAccount: string;
+    createPassword: string;
+    confirmPassword: string;
+    createAccountButton: string;
+    login: {
+      title: string;
+      noAccount: string;
+      signUp: string;
+    };
+    register: {
+      title: string;
+      hasAccount: string;
+      signIn: string;
+    };
+  };
+  status: {
+    active: string;
+    trialing: string;
+    cancelled: string;
+    past_due: string;
+    paused: string;
   };
 };
 
@@ -141,6 +351,7 @@ function getAdminNavItems(dict: Dictionary["sidebar"]): NavItem[] {
         { title: dict.admin.users, url: "/admin/users" },
         { title: dict.admin.plans, url: "/admin/plans" },
         { title: dict.admin.commits, url: "/admin/commits" },
+        { title: dict.admin.emails, url: "/admin/emails" },
       ],
     },
   ];
@@ -159,16 +370,16 @@ function isSectionActive(pathname: string, items: { url: string }[]): boolean {
 interface AppSidebarProps extends React.ComponentProps<typeof Sidebar> {
   dictionary: Dictionary;
   reminders?: ReminderWithUser[];
+  isAdmin?: boolean;
 }
 
 export function AppSidebar({
   dictionary,
   reminders = [],
+  isAdmin = false,
   ...props
 }: AppSidebarProps) {
   const pathname = usePathname();
-  const { data: session } = useSession();
-  const isAdmin = session?.user?.role === "ADMIN";
   const mainNavItems = getMainNavItems(dictionary.sidebar);
   const connectionsNavItems = getConnectionsNavItems(dictionary.sidebar);
   const otherNavItems = getOtherNavItems(dictionary.sidebar);

@@ -33,7 +33,8 @@
       "dashboard": "Dashboard",
       "users": "Users",
       "plans": "Plans",
-      "commits": "Commits"
+      "commits": "Commits",
+      "emails": "Emails"
     }
   },
   "integrations": {
@@ -46,5 +47,222 @@
     "billing": "Billing",
     "settings": "Settings",
     "logout": "Log out"
+  },
+  "common": {
+    "save": "Save",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "deleting": "Deleting...",
+    "edit": "Edit",
+    "create": "Create",
+    "confirm": "Confirm",
+    "close": "Close",
+    "back": "Back",
+    "next": "Next",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success",
+    "noResults": "No results",
+    "yes": "Yes",
+    "no": "No"
+  },
+  "contacts": {
+    "title": "Contacts",
+    "description": "Manage the contacts you've added via WhatsApp.",
+    "addContact": "Add contact",
+    "newContact": "New contact",
+    "editContact": "Edit contact",
+    "noWhatsApp": "No WhatsApp linked",
+    "noWhatsAppDescription": "Link your WhatsApp account in",
+    "settings": "Settings",
+    "toStartManagingContacts": "to start managing contacts.",
+    "noContacts": "No contacts yet",
+    "noContactsDescription": "Add your first contact using the button above, or via WhatsApp:",
+    "whatsAppCommand": "\"add John with 1122334455\"",
+    "noContacts_zero": "No contacts",
+    "noContacts_one": "1 contact",
+    "noContacts_other": "{count} contacts",
+    "deleteContact": "Delete contact",
+    "deleteContactDescription": "Remove {name} from your contacts? This can't be undone.",
+    "fields": {
+      "name": "Name",
+      "phone": "Phone",
+      "alias": "Alias",
+      "fullName": "Full name",
+      "phonePlaceholder": "1122334455",
+      "aliasPlaceholder": "Nickname or short alias (optional)",
+      "phoneHelp": "Argentina: enter 10 digits (country code added automatically)"
+    },
+    "errors": {
+      "somethingWentWrong": "Something went wrong"
+    }
+  },
+  "reminders": {
+    "title": "Reminders",
+    "description": "View and manage all your scheduled reminders.",
+    "schedule": "Schedule",
+    "all": "All",
+    "pending": "Pending",
+    "sent": "Sent",
+    "failed": "Failed",
+    "cancelled": "Cancelled",
+    "deleteReminder": "Delete Reminder",
+    "deleteReminderDescription": "Are you sure you want to delete this reminder? This action cannot be undone.",
+    "cancel": "Cancel",
+    "recurrence": {
+      "none": "No repeat",
+      "daily": "Daily",
+      "weekly": "Weekly",
+      "monthly": "Monthly"
+    },
+    "status": {
+      "pending": "pending",
+      "sent": "sent",
+      "failed": "failed",
+      "cancelled": "cancelled"
+    }
+  },
+  "profile": {
+    "title": "Profile",
+    "description": "Your personal information and plan."
+  },
+  "settings": {
+    "title": "Preferences",
+    "description": "Configure your bot notifications.",
+    "notifications": {
+      "title": "Notifications",
+      "description": "Choose which summaries you want to receive on WhatsApp",
+      "morningBrief": {
+        "title": "Morning Brief",
+        "description": "Receive a summary of your day at the start of the morning"
+      },
+      "dailyDigest": {
+        "title": "Daily Digest",
+        "description": "Receive a daily summary of your reminders"
+      },
+      "digestHour": {
+        "title": "Daily digest time",
+        "description": "When to receive the daily digest"
+      }
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Your personal information",
+      "name": "Name",
+      "email": "Email",
+      "memberSince": "Member since"
+    },
+    "plan": {
+      "title": "Your Plan",
+      "active": "Active",
+      "trial": "Trial",
+      "cancelled": "Cancelled",
+      "pastDue": "Past Due",
+      "paused": "Paused",
+      "dayRemaining": "day remaining",
+      "daysRemaining": "days remaining",
+      "onPlan": "You're on the {plan} plan",
+      "noActivePlan": "No active plan",
+      "noPlanDescription": "You don't have an active plan. Subscribe to start using all features."
+    },
+    "connectedAccounts": {
+      "title": "Connected Accounts",
+      "description": "Manage your connected services and integrations",
+      "whatsApp": "WhatsApp",
+      "connected": "Connected",
+      "notConnected": "Not connected",
+      "manage": "Manage",
+      "connect": "Connect"
+    },
+    "buttons": {
+      "manageSubscription": "Manage Subscription",
+      "viewPlans": "View Plans"
+    }
+  },
+  "subscription": {
+    "title": "Subscription",
+    "description": "Manage your subscription and billing information.",
+    "currentPlan": "Current Plan: {plan}",
+    "billingCycle": "Billing Cycle",
+    "price": "Price",
+    "currentPeriod": "Current Period",
+    "nextBillingDate": "Next Billing Date",
+    "trialEndsOn": "Trial ends on",
+    "changePlan": "Change Plan",
+    "cancelSubscription": "Cancel Subscription",
+    "noActiveSubscription": "No Active Subscription",
+    "noSubscriptionDescription": "You don't have an active subscription. Choose a plan to unlock premium features.",
+    "availablePlans": "Available Plans:",
+    "startingAt": "Starting at",
+    "month": "month",
+    "year": "year",
+    "buttons": {
+      "viewPlans": "View Plans"
+    }
+  },
+  "admin": {
+    "plans": {
+      "editPlan": "Edit Plan",
+      "createPlan": "Create Plan",
+      "updatePlanDetails": "Update the plan details below.",
+      "fillNewPlanDetails": "Fill in the details for the new plan.",
+      "fields": {
+        "planName": "Plan Name",
+        "sortOrder": "Sort Order",
+        "description": "Description",
+        "pricing": "Pricing",
+        "monthlyPrice": "Monthly Price ($)",
+        "yearlyDiscount": "Yearly Discount (%)",
+        "yearlyPrice": "Yearly Price ($)",
+        "resetToAutoCalculated": "Reset to auto-calculated",
+        "mpMonthlyPlanId": "MP Monthly Plan ID",
+        "mpYearlyPlanId": "MP Yearly Plan ID",
+        "maxReminders": "Max Reminders",
+        "maxEmailAccounts": "Max Email Accounts",
+        "trialDays": "Trial Days",
+        "unlimited": "Unlimited",
+        "calendarSync": "Calendar Sync",
+        "emailSync": "Email Sync",
+        "emailReply": "Email Reply",
+        "active": "Active",
+        "addFeature": "Add a feature...",
+        "features": "Features"
+      },
+      "fullAnnual": "Full annual: ${full} | Discount: {discount}% (${savings} off)",
+      "buttons": {
+        "add": "Add",
+        "remove": "Remove",
+        "cancel": "Cancel",
+        "save": "Save",
+        "saving": "Saving...",
+        "updatePlan": "Update Plan",
+        "createPlanButton": "Create Plan"
+      }
+    }
+  },
+  "auth": {
+    "createAccount": "Create account",
+    "createPassword": "Create a password",
+    "confirmPassword": "Confirm your password",
+    "createAccountButton": "Create Account",
+    "login": {
+      "title": "Sign in",
+      "noAccount": "Don't have an account?",
+      "signUp": "Sign up"
+    },
+    "register": {
+      "title": "Create an account",
+      "hasAccount": "Already have an account?",
+      "signIn": "Sign in"
+    }
+  },
+  "status": {
+    "active": "Active",
+    "trialing": "Trialing",
+    "cancelled": "Cancelled",
+    "past_due": "Past Due",
+    "paused": "Paused"
   }
 }

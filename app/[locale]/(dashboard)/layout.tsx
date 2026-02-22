@@ -1,3 +1,4 @@
+import React from "react";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
 import { getReminders } from "@/actions/reminders";
@@ -10,7 +11,8 @@ import {
 } from "@/components/ui/sidebar";
 import { Separator } from "@/components/ui/separator";
 import { getDictionary } from "@/i18n/dictionaries";
-import type { Locale } from "@/i18n/config";
+import { Locale } from "@/i18n/config";
+import { DictionaryProvider } from "@/components/dictionary-provider";
 
 export default async function DashboardLayout({
   children,
@@ -32,7 +34,11 @@ export default async function DashboardLayout({
 
   return (
     <SidebarProvider>
-      <AppSidebar dictionary={dictionary} reminders={remindersData.reminders} />
+      <AppSidebar
+          dictionary={dictionary}
+          reminders={remindersData.reminders}
+          isAdmin={session.user.role === "ADMIN"}
+        />
       <SidebarInset className="bg-background overflow-hidden">
         <header className="flex h-16 shrink-0 items-center gap-2 border-b border-border bg-background px-4">
           <SidebarTrigger className="-ml-1 md:hidden" />
@@ -41,7 +47,9 @@ export default async function DashboardLayout({
         </header>
 
         <div className="flex flex-col flex-1 min-h-0 min-w-0 overflow-y-auto overflow-x-hidden bg-background p-6">
-          {children}
+          <DictionaryProvider dictionary={dictionary}>
+            {children}
+          </DictionaryProvider>
         </div>
       </SidebarInset>
     </SidebarProvider>

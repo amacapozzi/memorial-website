@@ -10,3 +10,5 @@ export {
 export type { UserWithStats, GetUsersParams } from "./users";
 export { getCommits, getCommitFilterOptions } from "./commits";
 export type { GetCommitsParams } from "./commits";
+export { getUsersForSelect, getUserEmails } from "./emails";
+export type { UserForSelect, ProcessedEmailRow } from "./emails";

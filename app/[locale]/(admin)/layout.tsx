@@ -36,7 +36,7 @@ export default async function AdminLayout({
 
   return (
     <SidebarProvider>
-      <AppSidebar dictionary={dictionary} reminders={remindersData.reminders} />
+      <AppSidebar dictionary={dictionary} reminders={remindersData.reminders} isAdmin />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 border-b px-4">
           <SidebarTrigger className="-ml-1" />
