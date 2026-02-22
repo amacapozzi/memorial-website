@@ -26,6 +26,11 @@ model User {
   chatId        String?   @unique @map("chat_id")
   locale        String    @default("es")
 
+  // Bot notification preferences
+  digestEnabled Boolean   @default(true) @map("digest_enabled")
+  digestHour    Int       @default(8)    @map("digest_hour")
+  briefEnabled  Boolean   @default(true) @map("brief_enabled")
+
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
 
