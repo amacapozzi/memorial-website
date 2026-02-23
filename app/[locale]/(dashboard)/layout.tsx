@@ -35,10 +35,10 @@ export default async function DashboardLayout({
   return (
     <SidebarProvider>
       <AppSidebar
-          dictionary={dictionary}
-          reminders={remindersData.reminders}
-          isAdmin={session.user.role === "ADMIN"}
-        />
+        dictionary={dictionary}
+        reminders={remindersData.reminders}
+        isAdmin={session.user.role === "ADMIN"}
+      />
       <SidebarInset className="bg-background overflow-hidden">
         <header className="flex h-16 shrink-0 items-center gap-2 border-b border-border bg-background px-4">
           <SidebarTrigger className="-ml-1 md:hidden" />
